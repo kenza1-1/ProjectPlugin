@@ -1,0 +1,26 @@
+.temperature_widget{
+   font-size: 60px;
+   font-weight: 700;
+   color: #525b6e;
+   line-height: 80px;
+
+}
+.city{
+   font-size: 30px;
+   font-weight: 700;
+   color:#1e272e;
+   /* line-height: 80px; */
+
+}
+.location-weather-widget{
+
+   text-align: center;
+   padding: 20px;
+}
+.humidity{
+   font-size: 15px;
+   font-weight: 700;
+   color: #2d3436;
+   line-height: 80px;
+
+}
