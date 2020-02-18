@@ -48,11 +48,35 @@ Apres cette étape j’avait trouvé un problème => mon extension n’a pas ét
 Jusqu’ici je considéré que l'étape 2 est fini et je passe a la récupération de la température  Avec l’Api OpenWeather , site correspondant ([https://openweathermap.org/api](https://openweathermap.org/api))) et je remplace tout ce qui concerne le titre  par le nom de la ville et a la place de l’affichage du texte je vais récupérer et afficher  la température qui correspond a la ville pour la quelle j'ai  renseigné le nom de  la ville:
 **Résultat :**
 
+![enter image description here](https://image.noelshack.com/fichiers/2020/07/3/1581498326-coderemplacement.png)
 
+![enter image description here](https://image.noelshack.com/fichiers/2020/07/3/1581496882-resultwidget.png)
 
-# Files
+Pour récupérer la température ,on a une URL sur la quelle php va devoir aller  pour récupérer les informations dans mon cas j'ai un fichier en  json dont on trouve toutes les informations concernant la ville voir l'image ci dessous :
 
-StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**
+![enter image description here](https://image.noelshack.com/fichiers/2020/07/3/1581497959-fichierjson.png)
+
+On va faire une récupération d'un contenu  distants et récupérer avec le file_get_contents ( la on a sauvegardé toutes les informations nécessaires dans la base de données de wordpress en tant que paramètres et on va pouvoir y accéder lorsqu'on rafraîchit  la page .
+Pour récupérer la températures et d'autres paramètres de la ville et pour cela il doit falloir utiliser les fonctions php qui se rapport a la récupération de donnée json  pour faire ça y a une fonction en php ( json_decode) qui va nous permettre de directement manipuler du json et du récupérer les informations  dans un code json très simplement.
+
+![enter image description here](https://image.noelshack.com/fichiers/2020/07/3/1581498970-recupdonne.png)
+
+Pour récupérer la températures et d'autres paramètres de la ville et pour cela il doit falloir utiliser les fonctions php qui se rapport a la récupération de donnée json  pour faire ça y a une fonction en php ( json_decode) qui va nous permettre de directement manipuler du json et du récupérer les informations  dans un code json très simplement.
+
+![enter image description here](https://image.noelshack.com/fichiers/2020/07/3/1581498970-recupdonne.png)
+
+ Apres les récupération des données on ajoute du style (css , bootstrap) pour l'affichage de notre extension 
+
+**Résultat :**  
+
+![enter image description here](https://image.noelshack.com/fichiers/2020/07/3/1581501491-result.png)
+
+ ## Étape 4 :
+
+On était arrivé  a l’affichage du widget (ville, température de la ville, date , humidité) mais ce qu'on fusait c'est que a chaque fois que le widget était afficher on fusait une requête vers les serveurs de openweather et ça d'un point performance c'est pas terrible puisque a chaque fois q'un utilisateur  va accéder a une page ça va générer autant de requêtes au serveur de openweather que y a de widget.
+l'objectifs d'un point de vue performance c'est d'enregistrer dans notre WordPress la température pour chaque une des villes et on dit que cette donnée la va être valable pendant  20 minutes et les prochaines fois qu'une page va être charger , WordPress va regarder si la température pour la ville donnée existe déjà en base et s'li l a retrouve il va l'afficher directement au lieu de faire une requête vers le serveur de openweather . voir le code ci dessous :
+
+![enter image description here](https://image.noelshack.com/fichiers/2020/07/3/1581502575-requete.png)
 
 ## Create files and folders
 
